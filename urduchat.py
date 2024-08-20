@@ -6,6 +6,7 @@ import speech_recognition as sr
 from io import BytesIO
 from openai import OpenAI
 import os
+import base64
 
 
 # Convert the recorded audio to an AudioData object
@@ -62,6 +63,17 @@ def text_to_speech_conversion(text):
         return audio_data
 
 
+def play_audio_auto(audio_data, format="audio/webm"):
+    """Embeds the audio in HTML with autoplay enabled."""
+    # Encode audio data in base64
+    audio_base64 = base64.b64encode(audio_data.getvalue()).decode("utf-8")
+    audio_html = f"""
+        <audio autoplay>
+            <source src="data:{format};base64,{audio_base64}" type="{format}">
+            Your browser does not support the audio element.
+        </audio>
+    """
+    st.markdown(audio_html, unsafe_allow_html=True)
 
 # Streamlit user interface
 st.title('Urdu Voice Assistant')
@@ -99,4 +111,14 @@ if audio_bytes:
 
     # If you want to play the audio directly in your Streamlit app:
     st.audio(audio_data, format="audio/webm")
+
+
+    # Play the audio automatically using HTML
+    # play_audio_auto(audio_data, format="audio/webm")
+
+    # Add a play button for manual playback
+    if st.button("Play Audio"):
+        play_audio_auto(audio_data, format="audio/webm")
+
+
     
