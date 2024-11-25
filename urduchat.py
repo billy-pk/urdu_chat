@@ -116,6 +116,7 @@ if audio_bytes:
     # Play the audio automatically using HTML
     play_audio_auto(audio_data, format="audio/webm")
 
+    
     # # Add a play button for manual playback
     # if st.button("Play Audio"):
     #     play_audio_auto(audio_data, format="audio/webm")
