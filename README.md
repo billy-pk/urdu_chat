@@ -4,8 +4,11 @@ This repository contains the code for UrduChat, a web-based voice assistant buil
 **Features:**
 
 _Voice Input_: Utilize  speech recognition library for converting spoken Urdu into text.
+
 _Knowledge Base Access_: Leverage the power of the GPT-3.5 Turbo model for generating responses based on its vast knowledge base.
+
 _Text-to-Speech Output_: Employ the OpenAI TTS-1 model to convert generated responses back into spoken Urdu for an interactive experience.
+
 **Deployment**:
 
 The application is currently deployed at https://urduchat.streamlit.app/
